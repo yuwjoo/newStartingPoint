@@ -1,9 +1,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import * as icons from "@ant-design/icons-vue";
+import router from "./router";
 
 const app = createApp(App);
 
-Object.keys(icons).forEach((key) => app.component(key, icons[key]));
+app.use(router);
 
 app.mount("#app");
