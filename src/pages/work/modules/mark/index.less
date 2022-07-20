@@ -1,0 +1,22 @@
+.mark-box {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+
+  &.select {
+      background-color: #1890ff;
+  }
+
+  &.active {
+    background-color: #F56D6D;
+  }
+}

@@ -20,4 +20,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
     }
   },
+  server: {
+    port: 4550,
+    proxy: {
+      "/api": {
+        target: "https://6jd7gy.axshare.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    },
+  },
 });

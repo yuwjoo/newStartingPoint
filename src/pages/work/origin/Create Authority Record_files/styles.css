@@ -1,0 +1,297 @@
+.ax_default {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  letter-spacing:normal;
+  color:#333333;
+  vertical-align:none;
+  text-align:center;
+  line-height:normal;
+  text-transform:none;
+}
+.box_1 {
+}
+._形状 {
+}
+._图片 {
+}
+.placeholder {
+}
+.button {
+}
+.primary_button {
+  color:#FFFFFF;
+}
+.link_button {
+  color:#169BD5;
+}
+._一级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+._二级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
+}
+._三级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  text-align:left;
+}
+._四级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:14px;
+  text-align:left;
+}
+._五级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  text-align:left;
+}
+._六级标题 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:10px;
+  text-align:left;
+}
+._文本段落 {
+  text-align:left;
+}
+._文本链接 {
+  color:#0000FF;
+}
+._鼠标悬停文本链接时 {
+}
+._鼠标按下文本链接时 {
+}
+.form_hint {
+  color:#999999;
+}
+.form_disabled {
+}
+.arrow {
+}
+.text_field {
+  color:#000000;
+  text-align:left;
+}
+.text_area {
+  color:#000000;
+  text-align:left;
+}
+.droplist {
+  color:#000000;
+  text-align:left;
+}
+.list_box {
+  color:#000000;
+  text-align:left;
+}
+.checkbox {
+  text-align:left;
+}
+.radio_button {
+  text-align:left;
+}
+.table_cell {
+}
+._线 {
+}
+.menu_item {
+}
+._连接线 {
+}
+.snapshot {
+}
+.sticky_1 {
+  text-align:left;
+}
+.sticky_2 {
+  text-align:left;
+}
+.sticky_4 {
+  text-align:left;
+}
+.marker {
+  color:#FFFFFF;
+}
+._流程形状 {
+}
+.paragraph {
+  text-align:left;
+}
+.line {
+}
+.heading_1 {
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+}
+.heading_2 {
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
+}
+.label {
+  font-size:14px;
+  text-align:left;
+}
+._形状1 {
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:20px;
+  color:#4EDB7C;
+}
+.input-placeholder {
+  font-family:'PingFang SC ', 'PingFang SC';
+  font-weight:400;
+  font-style:normal;
+  font-size:14px;
+  color:#C0C4CC;
+  text-align:left;
+}
+.horizontal_line {
+}
+.shape {
+}
+.connector {
+}
+.box_2 {
+}
+.box_3 {
+}
+.ellipse {
+}
+.image {
+  color:#000000;
+}
+.vertical_line {
+}
+.table {
+}
+.iconfont {
+  font-family:'iconfont ', 'iconfont';
+  font-weight:400;
+  font-style:normal;
+  font-size:18px;
+  color:#666666;
+}
+.flow_shape {
+}
+.image1 {
+}
+.icon {
+}
+.html_button {
+  text-align:center;
+}
+.tree_node {
+  text-align:left;
+}
+.heading_3 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  text-align:left;
+}
+.label1 {
+  font-size:14px;
+  text-align:left;
+}
+._表格 {
+}
+._默认样式 {
+}
+.label2 {
+  font-size:14px;
+  text-align:left;
+}
+.line1 {
+}
+.box_11 {
+}
+.box_31 {
+}
+.paragraph1 {
+  text-align:left;
+}
+.text_field1 {
+  color:#000000;
+  text-align:left;
+}
+.primary_button1 {
+  color:#FFFFFF;
+}
+._图片1 {
+}
+.ellipse1 {
+}
+.line2 {
+}
+.icon1 {
+}
+.box_21 {
+}
+.box_22 {
+}
+.line3 {
+}
+.label3 {
+  font-size:14px;
+  text-align:left;
+}
+.box_12 {
+}
+.box_32 {
+}
+.ellipse2 {
+}
+.label4 {
+  font-size:14px;
+  text-align:left;
+}
+.box_23 {
+}
+.shape1 {
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  color:#333333;
+  text-align:center;
+  line-height:normal;
+}
+.box_13 {
+}
+.label5 {
+  font-size:14px;
+  text-align:left;
+}
+.text_field2 {
+  color:#000000;
+  text-align:left;
+}
+.icon2 {
+}
+.ellipse3 {
+}
+textarea, select, input, button { outline: none; }
