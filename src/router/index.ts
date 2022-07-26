@@ -1,8 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import { useUserStore } from "@/store";
-import work from "./modules/work";
+import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const constantRoutes: Array<RouteRecordRaw> = [
+export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Layout",
@@ -12,9 +10,8 @@ const constantRoutes: Array<RouteRecordRaw> = [
       {
         path: "home",
         name: "Home",
-        component: () => import("@/pages/home/index.vue"),
-      },
-      ...work,
+        component: () => import("@/pages/home/index.vue")
+      }
     ],
   },
   {
@@ -23,9 +20,19 @@ const constantRoutes: Array<RouteRecordRaw> = [
     component: () => import("@/views/login/index.vue")
   },
   {
+    path: "/error",
+    name: "Error",
+    component: () => import("@/views/error/index.vue"),
+    props: route => route.query
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
-    component: () => import("@/views/404/index.vue")
+    component: () => import("@/views/error/index.vue"),
+    props: route => ({
+      state: "404",
+      redirect: route.path
+    })
   }
 ];
 
@@ -33,7 +40,7 @@ const constantRoutes: Array<RouteRecordRaw> = [
  * 创建路由
  */
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: constantRoutes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -43,17 +50,5 @@ const router = createRouter({
     }
   },
 });
-
-/**
- * 重置路由
- */
-export function resetRouter() {
-  const userStore = useUserStore();
-  userStore.routes.forEach(({ name }) => {
-    if (name && router.hasRoute(name)) {
-      router.removeRoute(name);
-    }
-  });
-}
 
 export default router;

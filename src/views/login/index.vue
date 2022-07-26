@@ -47,7 +47,7 @@ async function hanldeLogin() {
   await userStore.login(form);
   handleRemember();
   router.push({
-    name: <string>route.query.redirect || "/",
+    name: <string>route.query.redirect || "Home",
   });
 }
 

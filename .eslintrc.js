@@ -21,6 +21,8 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "vue/multi-word-component-names": 0
+        "vue/multi-word-component-names": 0,
+        "vue/no-setup-props-destructure": 0,
+        "@typescript-eslint/no-empty-function": 0
     }
 };

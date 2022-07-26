@@ -9,6 +9,25 @@
           <a-col :flex="1"></a-col>
           <a-col>
             <fullscreen-outlined style="font-size: 18px; cursor: pointer" @click="changeFullScreen" />
+            <!-- <a-dropdown>
+                <a class="ant-dropdown-link" @click.prevent>
+                  管理员
+                  <DownOutlined />
+                </a>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item>
+                      <a href="javascript:;">1st menu item</a>
+                    </a-menu-item>
+                    <a-menu-item>
+                      <a href="javascript:;">2nd menu item</a>
+                    </a-menu-item>
+                    <a-menu-item>
+                      <a href="javascript:;">3rd menu item</a>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown> -->
           </a-col>
         </a-row>
       </a-layout-header>
@@ -32,7 +51,7 @@
 import { computed } from "vue";
 import { FullscreenOutlined } from "@ant-design/icons-vue";
 import { useCommonStore } from "@/store";
-import compSiderMenu from "./modules/sider-menu.vue";
+import compSiderMenu from "./modules/siderMenu/index.vue";
 
 const commonStore = useCommonStore();
 

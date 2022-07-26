@@ -1,7 +1,9 @@
 import { defineStore } from "pinia";
-import router, { resetRouter } from "@/router";
+import router from "@/router";
 import { login, getUserInfo } from "@/api/login"
-import { LoginData } from "@/api/login/index.d";
+import { LoginData } from "@/types/api/login";
+import useRouterStore from "./router"
+import type { Route } from "@/types/store/user"
 
 const useUserStore = defineStore({
   id: "user",
@@ -10,9 +12,29 @@ const useUserStore = defineStore({
       token: localStorage.getItem("token"),
       // 所属角色
       role: "",
-      // 拥有路由
-      routes: []
+      // 拥有的路由信息
+      routes: <Array<Route>>[]
     };
+  },
+  getters: {
+    // 导航菜单列表
+    menuList: state => {
+      const handleRoute = (routes: Array<Route>): Array<Route> => {
+        const temp = <Array<Route>>[];
+        routes.forEach(route => {
+          if (!route?.meta?.hidden) {
+            let childrens = <Array<Route>>[];
+            if (route.children?.length) {
+              childrens = handleRoute(route.children);
+            }
+            route.children = childrens.length ? route.children : undefined;
+            temp.push(route);
+          }
+        })
+        return temp;
+      }
+      return handleRoute(state.routes);
+    }
   },
   actions: {
     // 设置token
@@ -22,8 +44,10 @@ const useUserStore = defineStore({
     },
     // 登出
     logout() {
+      const routerStore = useRouterStore();
       // 重置路由
-      resetRouter();
+      routerStore.resetRouter();
+      // 重置持久化token
       localStorage.setItem("token", "");
       // 重置user仓库
       this.$reset();
@@ -31,21 +55,22 @@ const useUserStore = defineStore({
         name: "Login",
       });
     },
-    // 登入
+    // 登录
     async login(data: LoginData) {
       const res = await login({
         username: data.username,
         password: data.password,
       });
-      const { token } = res.data || {};
-      this.setToken(token);
+      this.setToken(res.data || "");
     },
     // 获取用户信息
     async getInfo() {
       const res = await getUserInfo();
       const { routes, role } = res.data || {};
-      this.role = role;
-      this.routes = routes || [];
+      this.$patch({
+        role,
+        routes: routes || []
+      })
     }
   },
 });

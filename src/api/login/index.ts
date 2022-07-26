@@ -1,10 +1,10 @@
 import request from "@/permission/request";
-import { LoginData } from "./index.d";
+import { LoginData } from "@/types/api/login";
 
 // 登录
 export function login(data: LoginData) {
   return request({
-    url: "work/login",
+    url: "user/login",
     method: "post",
     data,
   });
@@ -13,7 +13,7 @@ export function login(data: LoginData) {
 // 获取用户信息
 export function getUserInfo() {
   return request({
-    url: "work/getUserInfo",
+    url: "user/getUserInfo",
     method: "get",
   });
 }
