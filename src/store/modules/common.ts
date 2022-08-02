@@ -4,7 +4,7 @@ const useCommonStore = defineStore({
   id: "common",
   state() {
     return {
-      isFullScreen: !!localStorage.getItem("isFull"), // 全屏模式
+      isFullScreen: localStorage.getItem("isFull") === 'true', // 全屏模式
     };
   },
   actions: {

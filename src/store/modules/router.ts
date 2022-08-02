@@ -24,13 +24,13 @@ const useRouterStore = defineStore({
      * @param routes 路由信息
      */
     generateRouter(routes: Array<Route>): Array<RouteRecordRaw> {
-      const temp = objectCopy(routes);
+      const temp = objectCopy<Array<Route>>(routes);
       for (const route of temp) {
         // 解析路径对应的组件
         const compPath = (route.component || "").replace("@", "/src");
         const promiseComp = allModules[compPath];
         if (!promiseComp) {
-          console.error("解析路由信息时，对应component不存在", JSON.parse(JSON.stringify(route)))
+          console.error(`${route.path} 对应component不存在`, JSON.parse(JSON.stringify(route)))
         }
         route.component = promiseComp;
         // 将路由扁平化，统一处在同一级

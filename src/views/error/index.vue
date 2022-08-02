@@ -16,7 +16,7 @@
     <template v-else-if="state === '500'">
         <a-result status="500" title="500" sub-title="抱歉，服务器发生了错误！">
             <template #extra>
-                <a-button type="primary" @click="refreshPage">刷新页面</a-button>
+                <a-button type="primary" @click="router.replace(redirect)">刷新页面</a-button>
                 <a-button type="danger" @click="router.push({ name: 'Login' })">重新登录</a-button>
             </template>
         </a-result>
@@ -34,9 +34,4 @@ const { state = "404", redirect = "/home" } = defineProps<{
 }>()
 
 const router = useRouter();
-
-// 刷新页面
-function refreshPage() {
-    window.location = <any>(window.location.origin + redirect);
-}
 </script>

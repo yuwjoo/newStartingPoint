@@ -8,26 +8,23 @@
         <a-row type="flex">
           <a-col :flex="1"></a-col>
           <a-col>
-            <fullscreen-outlined style="font-size: 18px; cursor: pointer" @click="changeFullScreen" />
-            <!-- <a-dropdown>
-                <a class="ant-dropdown-link" @click.prevent>
+            <a-space align="center" size="large">
+              <fullscreen-outlined style="font-size: 18px; cursor: pointer; transform: translateY(2px);"
+                @click="changeFullScreen" />
+              <a-dropdown>
+                <a>
                   管理员
-                  <DownOutlined />
+                  <down-outlined />
                 </a>
                 <template #overlay>
                   <a-menu>
                     <a-menu-item>
-                      <a href="javascript:;">1st menu item</a>
-                    </a-menu-item>
-                    <a-menu-item>
-                      <a href="javascript:;">2nd menu item</a>
-                    </a-menu-item>
-                    <a-menu-item>
-                      <a href="javascript:;">3rd menu item</a>
+                      <a href="javascript:;" @click="userStore.logout">退出登录</a>
                     </a-menu-item>
                   </a-menu>
                 </template>
-              </a-dropdown> -->
+              </a-dropdown>
+            </a-space>
           </a-col>
         </a-row>
       </a-layout-header>
@@ -49,11 +46,12 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { FullscreenOutlined } from "@ant-design/icons-vue";
-import { useCommonStore } from "@/store";
+import { FullscreenOutlined, DownOutlined } from "@ant-design/icons-vue";
+import { useCommonStore, useUserStore } from "@/store";
 import compSiderMenu from "./modules/siderMenu/index.vue";
 
 const commonStore = useCommonStore();
+const userStore = useUserStore();
 
 const isFullScreen = computed(() => commonStore.isFullScreen);
 function changeFullScreen() {
@@ -62,11 +60,8 @@ function changeFullScreen() {
 </script>
 
 <style lang="less" scoped>
-// 内容背景色
-@bg-color: #fff;
-
 .ant-layout-header {
-  background-color: @bg-color;
+  background-color: @component-background;
 }
 
 .navbar-layout-content {
@@ -81,7 +76,7 @@ function changeFullScreen() {
 
   .main-layout-content__bg {
     min-height: 100%;
-    background-color: @bg-color;
+    background-color: @component-background;
     padding: 10px;
   }
 }
