@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GameRocker">
+        <!-- 摇杆底部圆环背景 -->
+        <attr name="lowerBackground" format="color|reference" />
+        <!-- 摇杆中心圆环背景 -->
+        <attr name="upperBackground" format="color|reference" />
+        <!-- 摇杆是否可以超出外环 -->
+        <attr name="canOverflowRing" format="boolean" />
+        <!-- 摇杆缩放比例（与外环相比） -->
+        <attr name="upperScale" format="float" />
+    </declare-styleable>
+</resources>
