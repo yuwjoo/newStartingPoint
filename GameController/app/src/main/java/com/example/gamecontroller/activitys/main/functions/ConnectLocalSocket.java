@@ -1,6 +1,6 @@
-package com.example.gamecontroller.connect;
+package com.example.gamecontroller.activitys.main.functions;
 
-import static com.example.gamecontroller.activity.MainActivity.MAIN_TAG;
+import static com.example.gamecontroller.activitys.main.MainActivity.MAIN_TAG;
 
 import android.net.LocalServerSocket;
 import android.net.LocalSocket;

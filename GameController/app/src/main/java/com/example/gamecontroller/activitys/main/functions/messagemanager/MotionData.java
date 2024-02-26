@@ -1,4 +1,4 @@
-package com.example.gamecontroller.entity;
+package com.example.gamecontroller.activitys.main.functions.messagemanager;
 
 /**
  * 触摸手势数据实体

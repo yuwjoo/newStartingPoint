@@ -1,4 +1,4 @@
-package com.example.gamecontroller.activity;
+package com.example.gamecontroller.activitys.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gamecontroller.R;
-import com.example.gamecontroller.connect.ConnectLocalSocket;
+import com.example.gamecontroller.activitys.gamecontroller.GameControllerActivity;
+import com.example.gamecontroller.activitys.main.functions.ConnectLocalSocket;
 
 import java.util.Timer;
 import java.util.TimerTask;

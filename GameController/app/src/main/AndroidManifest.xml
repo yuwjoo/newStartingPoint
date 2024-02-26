@@ -13,11 +13,11 @@
         android:theme="@style/Theme.GameController"
         tools:targetApi="31">
         <activity
-            android:name=".activity.GameControllerActivity"
+            android:name=".activitys.gamecontroller.GameControllerActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activitys.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

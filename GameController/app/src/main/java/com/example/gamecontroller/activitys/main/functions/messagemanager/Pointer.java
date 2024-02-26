@@ -1,4 +1,4 @@
-package com.example.gamecontroller.entity;
+package com.example.gamecontroller.activitys.main.functions.messagemanager;
 
 /**
  * 单个指针实体

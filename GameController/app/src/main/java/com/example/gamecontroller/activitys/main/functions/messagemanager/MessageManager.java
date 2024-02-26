@@ -1,10 +1,6 @@
-package com.example.gamecontroller.manager;
+package com.example.gamecontroller.activitys.main.functions.messagemanager;
 
 import android.view.MotionEvent;
-
-import com.example.gamecontroller.entity.Message;
-import com.example.gamecontroller.entity.MotionData;
-import com.example.gamecontroller.entity.Pointer;
 
 import java.nio.ByteBuffer;
 
