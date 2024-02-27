@@ -24,10 +24,12 @@ public class GameControllerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_controller);
 
-        RelativeLayout gameControllerLayout = findViewById(R.id.game_controller_layout);
+//        RelativeLayout gameControllerLayout = findViewById(R.id.game_controller_layout);
+//
+//        GameRocker gameRocker = gameControllerLayout.findViewById(R.id.game_rocker_btn);
+//        gameRocker.setVisibility(View.GONE);
 
-        GameRocker gameRocker = gameControllerLayout.findViewById(R.id.game_rocker_btn);
-        gameRocker.setVisibility(View.GONE);
+//        getWindow().getDecorView().findViewById(android.R.id.content); // 获取布局实例（未验证）
 
 
 //        GameRocker gameRocker = findViewById(R.id.game_rocker_btn);

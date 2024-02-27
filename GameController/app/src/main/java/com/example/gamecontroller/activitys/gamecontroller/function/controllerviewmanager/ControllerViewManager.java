@@ -1,4 +1,4 @@
-package com.example.gamecontroller.activitys.gamecontroller.function;
+package com.example.gamecontroller.activitys.gamecontroller.function.controllerviewmanager;
 
 import android.widget.RelativeLayout;
 
@@ -8,6 +8,4 @@ public class ControllerViewManager {
     public ControllerViewManager(RelativeLayout layout) {
         ControllerLayout = layout;
     }
-
-    public
 }

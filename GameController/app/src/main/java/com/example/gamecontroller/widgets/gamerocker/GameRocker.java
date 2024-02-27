@@ -1,5 +1,7 @@
 package com.example.gamecontroller.widgets.gamerocker;
 
+import static com.example.gamecontroller.activitys.main.MainActivity.MAIN_TAG;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,6 +10,7 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -99,6 +102,8 @@ public class GameRocker extends View {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+        Log.v(MAIN_TAG, "子级测量：" + "width:" + widthSize + "--" + widthMode + " height:" + heightSize + "--" + heightMode);
 
         if (widthMode == MeasureSpec.EXACTLY) {
             // 具体的值和match_parent

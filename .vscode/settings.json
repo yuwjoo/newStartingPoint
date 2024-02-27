@@ -3,5 +3,16 @@
         "lib/**/*.jar",
         "c:\\Users\\YH\\AppData\\Local\\Android\\Sdk\\platforms\\android-29\\android.jar",
         "e:\\InstallSoftware\\Android\\Sdk\\platforms\\android-29\\android.jar"
-    ]
+    ],
+    // 头部注释
+    "fileheader.customMade": {
+        "FileName": "",
+        "FilePath": "Do not edit",
+        "Date": "Do not edit", // 文件创建时间(不变)
+        "LastEditTime": "Do not edit", // 文件最后编辑时间
+        "Description": ""
+    },
+    "fileheader.configObj": {
+        "useWorker": true
+    }
 }
