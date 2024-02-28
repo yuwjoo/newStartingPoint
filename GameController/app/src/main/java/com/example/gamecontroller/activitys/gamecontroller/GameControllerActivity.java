@@ -1,9 +1,8 @@
 package com.example.gamecontroller.activitys.gamecontroller;
 
-import android.annotation.SuppressLint;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
@@ -13,29 +12,34 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.gamecontroller.R;
+import com.example.gamecontroller.activitys.gamecontroller.function.controllerviewmanager.ControllerViewManager;
+import com.example.gamecontroller.activitys.gamecontroller.function.controllerviewmanager.KeyConfig;
 import com.example.gamecontroller.activitys.main.functions.ConnectLocalSocket;
 import com.example.gamecontroller.activitys.main.functions.messagemanager.MessageManager;
-import com.example.gamecontroller.widgets.gamerocker.GameRocker;
 
 public class GameControllerActivity extends AppCompatActivity {
+    private ControllerViewManager controllerViewManager; // 控制器视图管理器
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_controller);
 
-//        RelativeLayout gameControllerLayout = findViewById(R.id.game_controller_layout);
-//
-//        GameRocker gameRocker = gameControllerLayout.findViewById(R.id.game_rocker_btn);
-//        gameRocker.setVisibility(View.GONE);
+        ViewGroup contentViewGroup = getWindow().getDecorView().findViewById(android.R.id.content); // 获取content布局
+        RelativeLayout layout = (RelativeLayout) contentViewGroup.getChildAt(0); // 获取根布局
 
-//        getWindow().getDecorView().findViewById(android.R.id.content); // 获取布局实例（未验证）
+        controllerViewManager = new ControllerViewManager(layout);
 
+        KeyConfig keyConfig = new KeyConfig(10, KeyConfig.TYPE_JOYSTICK, 200, 500, 300,
+                false, 0.5f, new Point());
+        KeyConfig keyConfig1 = new KeyConfig(11, KeyConfig.TYPE_JOYSTICK_AND_KEYSTROKE, 800, 500, 100,
+                false, 0.5f, new Point());
+        KeyConfig keyConfig2 = new KeyConfig(11, KeyConfig.TYPE_KEYSTROKE, 1000, 600, 100,
+                false, 0.5f, new Point());
 
-//        GameRocker gameRocker = findViewById(R.id.game_rocker_btn);
-//        gameRocker.setOnRockerOffsetListener((action, offsetX, offsetY, ratioX, ratioY) -> {
-//            Log.v(MAIN_TAG, action + " -- " + ratioX + " -- " + ratioY);
-//        });
+        controllerViewManager.addKeyConfig(keyConfig);
+        controllerViewManager.addKeyConfig(keyConfig1);
+        controllerViewManager.addKeyConfig(keyConfig2);
     }
 
     @Override

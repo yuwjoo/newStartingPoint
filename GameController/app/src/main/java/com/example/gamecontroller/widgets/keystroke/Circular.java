@@ -1,4 +1,4 @@
-package com.example.gamecontroller.widgets.joystick;
+package com.example.gamecontroller.widgets.keystroke;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

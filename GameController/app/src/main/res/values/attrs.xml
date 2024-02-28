@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 按键id -->
+    <attr name="keyId" format="integer" />
+
     <declare-styleable name="GameRocker">
         <!-- 摇杆底部圆环背景 -->
         <attr name="lowerBackground" format="color|reference" />
@@ -12,8 +15,8 @@
     </declare-styleable>
 
     <declare-styleable name="Joystick">
-        <!-- 触发区背景 -->
-        <attr name="triggerBackground" format="color|reference" />
+        <!-- 按键id -->
+        <attr name="keyId" />
         <!-- 轮盘背景 -->
         <attr name="rouletteBackground" format="color|reference" />
         <!-- 摇杆背景 -->
@@ -22,5 +25,12 @@
         <attr name="isRockerOverflow" format="boolean" />
         <!-- 摇杆缩放比例（与轮盘相比） -->
         <attr name="rockerScale" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="Keystroke">
+        <!-- 按键id -->
+        <attr name="keyId" />
+        <!-- 按键背景 -->
+        <attr name="keyBackground" format="color|reference" />
     </declare-styleable>
 </resources>
