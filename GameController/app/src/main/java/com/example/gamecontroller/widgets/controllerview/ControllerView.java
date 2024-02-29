@@ -1,33 +1,54 @@
 package com.example.gamecontroller.widgets.controllerview;
 
-import static com.example.gamecontroller.activitys.main.MainActivity.MAIN_TAG;
-
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class ControllerView extends RelativeLayout {
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
+public class ControllerView extends View {
+    ArrayList<VirtualKey> keyList = new ArrayList<>(20);
 
     public ControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        SkillWheelKey skillWheelKey = new SkillWheelKey(10, 300, 500, 500, 500, 120,230);
+        keyList.add(skillWheelKey);
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-
-        Log.v(MAIN_TAG, "父级测量：" + "width:" + widthSize + "--" + widthMode + " height:" + heightSize + "--" + heightMode);
+    protected void onDraw(@NonNull Canvas canvas) {
+        super.onDraw(canvas);
+        keyList.get(0).draw(canvas);
     }
 
     @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+    public boolean performClick() {
+        return super.performClick();
+    }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:// 按下
+                performClick();
+                break;
+            case MotionEvent.ACTION_MOVE:// 移动
+                break;
+            case MotionEvent.ACTION_UP:// 抬起
+            case MotionEvent.ACTION_CANCEL:// 取消
+                break;
+        }
+
+        keyList.get(0).touch(event.getActionMasked(), (int) event.getX(), (int) event.getY());
+
+        invalidate();
+
+        return true;
     }
 }
