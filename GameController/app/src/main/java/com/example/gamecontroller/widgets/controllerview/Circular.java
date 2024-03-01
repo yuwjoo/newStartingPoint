@@ -45,6 +45,14 @@ public class Circular {
         circularSize.setRadius(radius);
     }
 
+    public int getDiameter() {
+        return circularSize.diameter;
+    }
+
+    public void setDiameter(int diameter) {
+        circularSize.setDiameter(diameter);
+    }
+
     public int getCenterX() {
         return circularSize.centerX;
     }

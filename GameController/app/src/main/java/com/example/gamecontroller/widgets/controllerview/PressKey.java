@@ -8,10 +8,10 @@ import com.example.gamecontroller.activitys.main.functions.messagemanager.Pointe
 public class PressKey extends VirtualKey {
     private final Circular skillCircular; // 图标
 
-    public PressKey(int keyId, int size, int centerX, int centerY, int targetSize, int targetCenterX, int targetCenterY) {
-        super(keyId, size, centerX, centerY, targetSize, targetCenterX, targetCenterY);
+    public PressKey(int keyId, CircularSize size, CircularSize remoteSize) {
+        super(keyId, size, remoteSize);
 
-        skillCircular = new Circular(size / 2, centerX, centerY, null);
+        skillCircular = new Circular(size, null);
     }
 
     @Override
@@ -21,6 +21,26 @@ public class PressKey extends VirtualKey {
 
     @Override
     public Pointer touch(int action, int touchX, int touchY) {
-        return new Pointer(keyId, targetCenterX, targetCenterY, 1.0f);
+        float remoteX = remoteSize.centerX;
+        float remoteY = remoteSize.centerY;
+        float pressure = 0;
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                pressure = 1.0f;
+                break;
+            case MotionEvent.ACTION_UP:
+                pressure = 0.0f;
+                break;
+        }
+
+        return new Pointer(keyId, remoteX, remoteY, pressure);
+    }
+
+    @Override
+    public void setCenter(int x, int y) {
+        size.setCenter(x, y);
+        skillCircular.setCenter(x, y);
     }
 }

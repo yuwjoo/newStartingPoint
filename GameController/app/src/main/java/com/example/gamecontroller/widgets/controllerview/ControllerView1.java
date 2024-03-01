@@ -16,7 +16,7 @@ import com.example.gamecontroller.activitys.main.functions.messagemanager.Pointe
 import java.util.HashMap;
 import java.util.Map;
 
-public class ControllerView extends View {
+public class ControllerView1 extends View {
     Map<Integer, VirtualKey> virtualKeyMap = new HashMap<>();
     Map<Integer, Integer> idMap = new HashMap<>();
     boolean isEdit; // 编辑状态
@@ -24,7 +24,7 @@ public class ControllerView extends View {
     int startOffsetX; // 拖拽起始偏移坐标x
     int startOffsetY; // 拖拽起始偏移坐标y
 
-    public ControllerView(Context context, AttributeSet attrs) {
+    public ControllerView1(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         SkillWheelKey skillWheelKey = new SkillWheelKey(10, new CircularSize(100, 150, 500), new CircularSize(500, 120, 230));

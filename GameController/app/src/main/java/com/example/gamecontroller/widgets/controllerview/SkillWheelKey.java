@@ -1,23 +1,22 @@
 package com.example.gamecontroller.widgets.controllerview;
 
-import static com.example.gamecontroller.activitys.main.MainActivity.MAIN_TAG;
-
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.gamecontroller.activitys.main.functions.messagemanager.Pointer;
+
+import java.util.ArrayList;
 
 public class SkillWheelKey extends VirtualKey {
     private Circular skillCircular; // 技能图标
     private Joystick joystick; // 技能轮盘
     private boolean isDrag; // 是否拖拽中
 
-    public SkillWheelKey(int keyId, int size, int centerX, int centerY, int targetSize, int targetCenterX, int targetCenterY) {
-        super(keyId, size, centerX, centerY, targetSize, targetCenterX, targetCenterY);
+    public SkillWheelKey(int keyId, CircularSize size, CircularSize remoteSize) {
+        super(keyId, size, remoteSize);
 
-        skillCircular = new Circular(size / 2, centerX, centerY, null);
-        joystick = new Joystick(300, centerX, centerY, true, 0.5f, null, null);
+        skillCircular = new Circular(size, null);
+        joystick = new Joystick(new CircularSize(200, size.centerX, size.centerY), true, 0.5f, null, null);
     }
 
     @Override
@@ -30,24 +29,36 @@ public class SkillWheelKey extends VirtualKey {
 
     @Override
     public Pointer touch(int action, int touchX, int touchY) {
-        Joystick.ShakeEvent shakeEvent = null;
+        float remoteX = 0;
+        float remoteY = 0;
+        float pressure = 0;
 
         switch (action) {
-            case MotionEvent.ACTION_DOWN:// 按下
+            case MotionEvent.ACTION_DOWN:
                 isDrag = true;
-                joystick.setCenterPoint(touchX, touchY);
+                joystick.setCenter(touchX, touchY);
             case MotionEvent.ACTION_MOVE:
-                shakeEvent = joystick.shake(action, touchX, touchY);
+                ArrayList<Float> ratioList = joystick.shake(touchX, touchY);
+                remoteX = remoteSize.centerX + remoteSize.radius * ratioList.get(0);
+                remoteY = remoteSize.centerY + remoteSize.radius * ratioList.get(1);
+                pressure = 1.0f;
                 break;
-            case MotionEvent.ACTION_UP: // 抬起
+            case MotionEvent.ACTION_UP:
                 isDrag = false;
-                shakeEvent = joystick.shake(action, touchX, touchY);
+                joystick.reset();
+                remoteX = remoteSize.centerX;
+                remoteY = remoteSize.centerY;
+                pressure = 0.0f;
                 break;
         }
 
-        int targetRadius = targetSize / 2;
+        return new Pointer(keyId, remoteX, remoteY, pressure);
+    }
 
-        assert shakeEvent != null;
-        return new Pointer(keyId, targetRadius * shakeEvent.ratioX, targetRadius * shakeEvent.ratioY, 1.0f);
+    @Override
+    public void setCenter(int x, int y) {
+        size.setCenter(x, y);
+        skillCircular.setCenter(x, y);
+        joystick.setCenter(x, y);
     }
 }

@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 
+import java.util.ArrayList;
+
 /**
  * 游戏摇杆
  */
@@ -42,27 +44,25 @@ public class Joystick {
         this.maxDistance = maxDistance;
     }
 
-    public int getSize() {
-        return this.roulette.;
+    public int getDiameter() {
+        return this.roulette.getDiameter();
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setDiameter(int diameter) {
+        this.roulette.setDiameter(diameter);
     }
 
     public int getCenterX() {
-        return centerX;
+        return this.roulette.getCenterX();
     }
 
     public int getCenterY() {
-        return centerY;
+        return this.roulette.getCenterY();
     }
 
-    public void setCenterPoint(int centerX, int centerY) {
-        this.centerX = centerX;
-        this.centerY = centerY;
-        rouletteCircular.setCenterPoint(centerX, centerY);
-        rockerCircular.setCenterPoint(centerX, centerY);
+    public void setCenter(int centerX, int centerY) {
+        this.roulette.setCenter(centerX, centerY);
+        this.rocker.setCenter(centerX, centerY);
     }
 
     /**
@@ -71,34 +71,34 @@ public class Joystick {
      * @param canvas 画布
      */
     protected void draw(Canvas canvas) {
-        rouletteCircular.draw(canvas);
-        rockerCircular.draw(canvas);
+        roulette.draw(canvas);
+        rocker.draw(canvas);
     }
 
     /**
      * 摇动摇杆
      *
-     * @param action 触摸动作
      * @param touchX 触摸x
      * @param touchY 触摸x
      */
-    public ShakeEvent shake(int action, int touchX, int touchY) {
-        Point rockerPoint = null;
+    public ArrayList<Float> shake(int touchX, int touchY) {
+        ArrayList<Float> ratioList = new ArrayList<>(2);
 
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:// 按下
-            case MotionEvent.ACTION_MOVE:// 移动
-                rockerPoint = getRockerPositionPoint(rouletteCircular.getCenterX(), rouletteCircular.getCenterY(), touchX, touchY, maxDistance); // 计算摇杆实际偏移的位置
-                break;
-            case MotionEvent.ACTION_UP: // 抬起
-                rockerPoint = new Point(rouletteCircular.getCenterX(), rouletteCircular.getCenterY());
-                break;
-        }
+        Point rockerPoint = getRockerCenter(roulette.getCenterX(), roulette.getCenterY(), touchX, touchY, maxDistance); // 计算摇杆实际偏移的位置
 
-        assert rockerPoint != null;
-        rockerCircular.setCenterPoint(rockerPoint.x, rockerPoint.y);
+        rocker.setCenter(rockerPoint.x, rockerPoint.y);
+        ratioList.add(0, (float) ((rockerPoint.x - roulette.getCenterX()) / maxDistance));
+        ratioList.add(1, (float) ((rockerPoint.y - roulette.getCenterY()) / maxDistance));
 
-        return  new ShakeEvent((float) (rockerPoint.x - rouletteCircular.getCenterX()) / +maxDistance, (float) (rockerPoint.y - rouletteCircular.getCenterY()) / +maxDistance);
+        return ratioList;
+    }
+
+    /**
+     * 复位摇杆
+     *
+     */
+    public void reset() {
+        rocker.setCenter(roulette.getCenterX(), roulette.getCenterY());
     }
 
     /**
@@ -111,7 +111,7 @@ public class Joystick {
      * @param maxDistance 起始点和结束点的最大距离
      * @return 摇杆实际显示的位置（点）
      */
-    private Point getRockerPositionPoint(int startX, int startY, int endX, int endY, float maxDistance) {
+    private Point getRockerCenter(int startX, int startY, int endX, int endY, float maxDistance) {
         int lenX = endX - startX; // 两点在X轴的距离
         int lenY = endY - startY;// 两点在Y轴距离
         double lenXY = Math.sqrt(lenX * lenX + lenY * lenY); // 两点距离
